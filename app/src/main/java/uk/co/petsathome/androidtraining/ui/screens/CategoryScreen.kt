@@ -77,7 +77,7 @@ fun categoryCard(
             ) {
                 Text(text = category.strCategory)
                 Text(
-                    text = category.strCategoryDescription.limitChar(60),
+                    text = category.strCategoryDescription.limitChar(250),
 
                 )
             }
