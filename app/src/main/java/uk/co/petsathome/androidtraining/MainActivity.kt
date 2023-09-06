@@ -7,12 +7,9 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import uk.co.petsathome.androidtraining.dependencyinjection.ViewModelFactories
-import uk.co.petsathome.androidtraining.ui.screens.categoryScreen
+import uk.co.petsathome.androidtraining.ui.Navigation
 import uk.co.petsathome.androidtraining.ui.theme.AndroidtrainingTheme
 import uk.co.petsathome.androidtraining.ui.viewmodels.CategoryListViewModel
 
@@ -28,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    categoryScreen(categoryListViewModel)
+                    Navigation(categoryListViewModel = categoryListViewModel)
                 }
             }
         }

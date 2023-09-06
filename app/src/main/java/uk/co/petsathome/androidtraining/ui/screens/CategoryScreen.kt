@@ -1,6 +1,7 @@
 package uk.co.petsathome.androidtraining.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -30,8 +31,10 @@ import uk.co.petsathome.androidtraining.ui.viewmodels.CategoryListViewModel
 import uk.co.petsathome.androidtraining.util.limitChar
 
 @Composable
-fun categoryScreen(
-    categoryListViewModel: CategoryListViewModel
+fun CategoryScreen(
+    categoryListViewModel: CategoryListViewModel,
+    onClick : (String)-> Unit
+
 ) {
     LaunchedEffect(Unit) {
         categoryListViewModel.getCategoryList()
@@ -46,7 +49,8 @@ fun categoryScreen(
                 categoryList.value,
 
                 ) {
-                categoryCard(category = it)
+                CategoryCard(category = it,
+                    onClick = onClick)
             }
 
         })
@@ -54,13 +58,15 @@ fun categoryScreen(
 }
 
 @Composable
-fun categoryCard(
-    category: Category
+fun CategoryCard(
+    category: Category,
+    onClick : (String)-> Unit
 
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { onClick (category.strCategory) }
 
     ) {
         Row(
@@ -88,7 +94,7 @@ fun categoryCard(
 
 @Preview
 @Composable
-fun categoryCardPreview() {
+fun CategoryCardPreview() {
     val category = Category(
         idCategory = "1",
         strCategory = "2",
@@ -96,5 +102,5 @@ fun categoryCardPreview() {
         strCategoryDescription = "Babi jiefjihefgir efjbjr4bug45iu uiegeuir44g " +
                 "ieinighriog5 p4hgo5g "
     )
-    categoryCard(category = category)
+    CategoryCard(category = category, onClick = {})
 }
