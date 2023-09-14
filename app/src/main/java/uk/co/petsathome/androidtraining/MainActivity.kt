@@ -12,9 +12,11 @@ import uk.co.petsathome.androidtraining.dependencyinjection.ViewModelFactories
 import uk.co.petsathome.androidtraining.ui.Navigation
 import uk.co.petsathome.androidtraining.ui.theme.AndroidtrainingTheme
 import uk.co.petsathome.androidtraining.ui.viewmodels.CategoryListViewModel
+import uk.co.petsathome.androidtraining.ui.viewmodels.MealListViewModel
 
 class MainActivity : ComponentActivity() {
     private val categoryListViewModel: CategoryListViewModel by viewModels { ViewModelFactories.categoryListViewModelFactory }
+    private val mealListViewModel: MealListViewModel by viewModels { ViewModelFactories.mealListViewModelFactory}
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -25,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Navigation(categoryListViewModel = categoryListViewModel)
+                    Navigation(categoryListViewModel = categoryListViewModel, mealListViewModel = mealListViewModel)
                 }
             }
         }

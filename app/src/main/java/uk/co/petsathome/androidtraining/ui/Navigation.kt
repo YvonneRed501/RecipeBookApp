@@ -7,7 +7,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import uk.co.petsathome.androidtraining.ui.screens.CategoryScreen
-import uk.co.petsathome.androidtraining.ui.screens.MealCard
 import uk.co.petsathome.androidtraining.ui.screens.MealScreen
 import uk.co.petsathome.androidtraining.ui.viewmodels.CategoryListViewModel
 import uk.co.petsathome.androidtraining.ui.viewmodels.MealListViewModel
@@ -21,7 +20,8 @@ sealed class NavRoutes(val route: String) {
 
 @Composable
 fun Navigation(
-    categoryListViewModel: CategoryListViewModel
+    categoryListViewModel: CategoryListViewModel,
+    mealListViewModel: MealListViewModel
 ) {
     val navController = rememberNavController()
     NavHost(
@@ -41,7 +41,7 @@ fun Navigation(
         )){
             val categoryName = it.arguments?.getString("category_name")
             println(categoryName)
-            MealScreen(mealListViewModel = MealListViewModel())
+            MealScreen(mealListViewModel = mealListViewModel)
         }
 
     }
